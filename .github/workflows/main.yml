@@ -18,36 +18,36 @@ env:
   IMAGE_BP_NAME: spring-petclinic-bp  
 
 jobs:
-  snyk_vulnerability_check:
-    
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      - name: Cache local Maven repository
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-      
-      - name: Run Snyk test
-        uses: snyk/actions/maven@master
-        continue-on-error: true
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
-        with:
-          command: test
-      
-      - name: Run Snyk monitor
-        uses: snyk/actions/maven@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
-        with:
-          command: monitor
-          args: --severity-threshold=high
+#  snyk_vulnerability_check:
+#    
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#      
+#      - name: Cache local Maven repository
+#        uses: actions/cache@v2
+#        with:
+#          path: ~/.m2/repository
+#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-maven-
+#      
+#      - name: Run Snyk test
+#        uses: snyk/actions/maven@master
+#        continue-on-error: true
+#        env:
+#          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
+#        with:
+#          command: test
+#      
+#      - name: Run Snyk monitor
+#        uses: snyk/actions/maven@master
+#        env:
+#          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
+#        with:
+#          command: monitor
+#          args: --severity-threshold=high
 
   build_mvn_aritfact:
 
