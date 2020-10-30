@@ -14,7 +14,7 @@ env:
   # TODO: Change Registry USERID to your userid
   REGISTRY_USERID: omearaj
   #TODO: Only change if you already have a spring-petclinic you want to keep. 
-  IMAGE_NAME: spring-petclinic
+  IMAGE_NAME: spring-petclinic-dd
   IMAGE_BP_NAME: spring-petclinic-bp  
 
 jobs:
