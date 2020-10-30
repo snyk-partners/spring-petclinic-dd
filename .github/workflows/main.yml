@@ -107,13 +107,13 @@ jobs:
          tag_with_sha: true  
          add_git_labels: true  
       
-      - name: Run Snyk to check Docker images for vulnerabilities
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
-        with:
-         image: omearaj/${{ env.IMAGE_NAME }}
-         command: test  
+#      - name: Run Snyk to check Docker images for vulnerabilities
+#        uses: snyk/actions/docker@master
+#        env:
+#          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
+#        with:
+#         image: omearaj/${{ env.IMAGE_NAME }}
+#         command: test  
 
   deploy-on-GKE:
     needs: build-and-push-Docker-Image
