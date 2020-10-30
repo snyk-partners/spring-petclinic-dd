@@ -113,7 +113,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
         with:
          image: omearaj/${{ env.IMAGE_NAME }}
-         command: monitor  
+         command: test  
 
   deploy-on-GKE:
     needs: build-and-push-Docker-Image
