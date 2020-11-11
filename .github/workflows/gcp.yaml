@@ -25,7 +25,7 @@ jobs:
     - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
   
   Deploy-datadog:
-    needs: [GCP-create-Kubernetes]
+    needs: GCP-create-Kubernetes
     runs-on: ubunutu-latest
     steps:
     - name: install datadog on K8s
