@@ -12,8 +12,6 @@ jobs:
     
     runs-on: ubuntu-latest
     steps:
-    - name: Set env ClusterName
-      run: echo ::set-env name=clusterName::${{ secrets.GKE_CLUSTER_NAME}}
     - uses: actions/checkout@v2
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
@@ -28,7 +26,6 @@ jobs:
     
     runs-on: ubunutu-latest
     steps:
-    - name: install datadog on K8s
     # Get new cluster credentials 
     - run: |-
         gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
