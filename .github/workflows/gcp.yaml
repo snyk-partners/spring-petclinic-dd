@@ -25,7 +25,7 @@ jobs:
       
     # Get new cluster credentials 
     - run: |-
-        gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}}
+        gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
     # Set up DataDog in Kubernetes cluster
     - run: |-
         helm repo add datadog https://helm.datadoghq.com
