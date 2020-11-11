@@ -15,7 +15,8 @@ env:
   REGISTRY_USERID: omearaj
   #TODO: Only change if you already have a spring-petclinic you want to keep. 
   IMAGE_NAME: spring-petclinic-dd
-  IMAGE_BP_NAME: spring-petclinic-bp  
+  IMAGE_BP_NAME: spring-petclinic-bp
+  zone: us-central1-c  
 
 jobs:
 #  snyk_vulnerability_check:
@@ -119,14 +120,17 @@ jobs:
     needs: build-and-push-Docker-Image
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: kubectl - Google Cloud GKE cluster.
-      uses: ameydev/gke-kubectl-action@master
-      env:
-        PROJECT_ID: ${{ secrets.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.GCP_APP_CREDS_DEPOY }}
-        CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
-        ZONE_NAME: us-central1-c
+    - uses: actions/checkout@v2
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        args: apply -f kubernetes/petclinic-deployment.yaml
+        #version: '290.0.1'
+        project_id: ${{ secrets.PROJECT_ID }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export_default_credentials: true
+    # Get new cluster credentials 
+    - run: |-
+        gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
+        helm install petclinic-db --set mysqlDatabase=petclinic stable/mysql
+        kubectl apply -f kubernetes/petclinic-deployment.yaml
+        kubectl apply -f kubernetes/petclinic-svc.yaml
 
