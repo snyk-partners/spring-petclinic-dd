@@ -9,7 +9,7 @@ env:
   CONTAINER_REGISTRY_URL: https://registry.hub.docker.com
 
 jobs:
-  GCP Kubernetes:
+  GCP-Kubernetes:
     
     runs-on: ubuntu-latest
     steps:
