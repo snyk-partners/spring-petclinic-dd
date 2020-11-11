@@ -4,15 +4,13 @@ name: GCP SetUp
 
 on: workflow_dispatch
 
-env:
-  # TODO: Change registry URL if not using Docker Hub
-  CONTAINER_REGISTRY_URL: https://registry.hub.docker.com
-
 jobs:
   GCP-Kubernetes:
     
     runs-on: ubuntu-latest
     steps:
+    - name: Set env ClusterName
+      run: echo ::set-env name=clusterName::${{ secret.GKE_CLUSTER_NAME}}
     - uses: actions/checkout@v2
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
@@ -20,4 +18,4 @@ jobs:
         project_id: ${{ secrets.PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
-    - run: gcloud container clusters create test --zone=us-central1-c
+    - run: gcloud container clusters create ${{secret.GKE_CLUSTER_NAME}} --zone=us-central1-c
