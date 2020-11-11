@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-#
 name: GCP SetUp
 
 on: workflow_dispatch
@@ -9,7 +8,7 @@ env:
   releaseName: datadog-agent  
 
 jobs:
-  GCP-create-Kubernetes:
+ GCP-create-kubernetes:
     
     runs-on: ubuntu-latest
     steps:
@@ -24,8 +23,9 @@ jobs:
         export_default_credentials: true
     - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
   
-  Deploy-datadog:
-    needs: GCP-create-Kubernetes
+ Deploy-datadog:
+    needs: GCP-create-kubernetes
+    
     runs-on: ubunutu-latest
     steps:
     - name: install datadog on K8s
