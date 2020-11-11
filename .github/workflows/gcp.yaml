@@ -20,4 +20,4 @@ jobs:
         project_id: ${{ secrets.PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
-    - run: gcloud container clusters create test --region=us-central1 --zone=us-central1-c
+    - run: gcloud container clusters create test --zone=us-central1-c
