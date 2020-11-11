@@ -5,8 +5,7 @@ name: GCP Teardown
 on: workflow_dispatch
 
 env:
-  # TODO: Change registry URL if not using Docker Hub
-  CONTAINER_REGISTRY_URL: https://registry.hub.docker.com
+  zone: us-central1-c
 
 jobs:
   GCP-Kubernetes:
@@ -20,4 +19,8 @@ jobs:
         project_id: ${{ secrets.PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
-    - run: gcloud container clusters delete ${{secrets.GKE_CLUSTER_NAME}} --zone=us-central1-c --quiet
+    - run: |-
+        gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
+        kubectl delete -f kubernetes/petclinic-deployment.yaml
+        kubectl delete -f kubernetes/petclinic-svc.yaml
+        gcloud container clusters delete ${{secrets.GKE_CLUSTER_NAME}} --zone=us-central1-c --quiet
