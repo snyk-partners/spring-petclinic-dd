@@ -4,6 +4,9 @@ name: GCP SetUp
 
 on: workflow_dispatch
 
+env:
+  zone: us-central1-c
+
 jobs:
   GCP-Kubernetes:
     
@@ -18,4 +21,13 @@ jobs:
         project_id: ${{ secrets.PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
-    - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone=us-central1-c
+    - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone= {{ env.zone }}
+      
+    # Get new cluster credentials 
+    - run: |-
+        gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}}
+    # Set up DataDog in Kubernetes cluster
+    - run: |-
+        helm repo add datadog https://helm.datadoghq.com
+        helm repo add stable https://charts.helm.sh/stable
+        helm repo update
