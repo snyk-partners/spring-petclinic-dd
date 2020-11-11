@@ -8,7 +8,7 @@ env:
   releaseName: datadog-agent  
 
 jobs:
- GCP-create-kubernetes:
+ GCP-create-kubernetes-w-DD:
     
     runs-on: ubuntu-latest
     steps:
@@ -21,11 +21,7 @@ jobs:
         export_default_credentials: true
     - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
   
- Deploy-datadog:
-    needs: GCP-create-kubernetes
-    
-    runs-on: ubuntu-latest
-    steps:
+   
     # Get new cluster credentials 
     - run: |-
         gcloud container clusters get-credentials ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
