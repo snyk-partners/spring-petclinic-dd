@@ -24,7 +24,7 @@ jobs:
  Deploy-datadog:
     needs: GCP-create-kubernetes
     
-    runs-on: ubunutu-latest
+    runs-on: ubuntu-latest
     steps:
     # Get new cluster credentials 
     - run: |-
