@@ -6,7 +6,7 @@ metadata:
     app: petclinic
     tags.datadoghq.com/env: "production"
     tags.datadoghq.com/service: "petclinic2"
-    tags.datadoghq.com/version: "v2.0"
+    tags.datadoghq.com/version: "v3.0"
 spec:
   replicas: 1
   selector:
