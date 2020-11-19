@@ -8,7 +8,6 @@ on: workflow_dispatch
 
 env:
   zone: us-central1-c
-  version: v3.0
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
