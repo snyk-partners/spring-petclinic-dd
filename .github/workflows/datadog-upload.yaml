@@ -1,1 +1,21 @@
+# This is a basic workflow to help you get started with Actions
 
+name: Upload Datadog Data
+
+on: workflow_dispatch
+
+env:
+  zone: us-central1-c
+  version: v3.0
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+ upload-dd-data:
+   runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |-
+        npm install --save-dev @datadog/datadog-ci snyk
+        ./node_modules/.bin/snyk auth ${{ secrets.SNYK_API_KEY }}
+        ./node_modules/.bin/snyk test --print-deps --json > deps.json
+        ./node_modules/.bin/datadog-ci dependencies upload deps.json --source snyk --service "petclinic2" --release-version "${{ env.version }}"
