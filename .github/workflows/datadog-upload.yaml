@@ -24,4 +24,4 @@ jobs:
         ./node_modules/.bin/snyk auth ${{ secrets.SNYK_API_TOKEN }}
         ./node_modules/.bin/snyk test --print-deps --json --file=pom.xml > deps.json
         cat deps.json
-        ./node_modules/.bin/datadog-ci dependencies upload deps.json --source snyk --service "petclinic2" --release-version "${{ env.version }}"
+        ./node_modules/.bin/datadog-ci dependencies upload deps.json --source snyk --service petclinic2 --release-version ${{ env.version }}
