@@ -5,8 +5,10 @@ name: Build Artifact, Build & Push Image
 on:
   push:
     branches: [ main ]
+    paths-ignore: [kubernetes, .github, datadog]
   pull_request:
     branches: [ main ]
+    paths-ignore: [kubernetes, .github, datadog]
 
 env:
   # TODO: Change registry URL if not using Docker Hub
