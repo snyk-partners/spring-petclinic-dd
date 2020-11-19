@@ -12,18 +12,7 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  upload-DD-data:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: |-
-        npm install --save-dev @datadog/datadog-ci snyk
-        snyk auth ${{ secrets.SNYK_API_KEY }}
-        snyk test --print-deps --json > deps.json
-        ./node_modules/.bin/datadog-ci dependencies upload deps.json --source snyk --service "petclinic2" --release-version "${{ env.version }}"
-     
   deploy-on-GKE:
-    needs: upload-DD-data
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
