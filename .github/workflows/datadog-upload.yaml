@@ -19,3 +19,6 @@ jobs:
         ./node_modules/.bin/snyk auth ${{ secrets.SNYK_API_TOKEN }}
         ./node_modules/.bin/snyk test --print-deps --json > deps.json
         ./node_modules/.bin/datadog-ci dependencies upload deps.json --source snyk --service "petclinic2" --release-version "${{ env.version }}"
+      env:
+        DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+        DATADOG_APP_KEY: ${{ secrets.DATADOG_APP_KEY }} 
