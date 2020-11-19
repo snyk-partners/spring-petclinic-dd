@@ -12,7 +12,7 @@ env:
 jobs:
  upload-dd-data:
    runs-on: ubuntu-latest
-    steps:
+   steps:
     - uses: actions/checkout@v2
     - run: |-
         npm install --save-dev @datadog/datadog-ci snyk
