@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v2
     - run: |-
         npm install --save-dev @datadog/datadog-ci snyk
-        ./node_modules/.bin/snyk auth ${{ secrets.SNYK_API_KEY }}
+        ./node_modules/.bin/snyk auth ${{ secrets.SNYK_API_TOKEN }}
         ./node_modules/.bin/snyk test --print-deps --json > deps.json
         ./node_modules/.bin/datadog-ci dependencies upload deps.json --source snyk --service "petclinic2" --release-version "${{ env.version }}"
