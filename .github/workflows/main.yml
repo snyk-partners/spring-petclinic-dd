@@ -104,7 +104,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
          name: spring-petclinic
-         path: ${{ env.github_workspace }}/target
+         path: ${{ env.github_workspace }}./target
            
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
