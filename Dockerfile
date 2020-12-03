@@ -8,7 +8,7 @@ FROM openjdk:8
 COPY ./target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar /spring-petclinic.jar
 COPY --from=builder /petclinic/dd-java-agent*.jar .
 #ENV DD_SERVICE=Petclinic
-#ENV DD_ENV=Production8
+#ENV DD_ENV=Production
 #ENV DD_VERSION=1.0
 RUN sh -c 'touch /hello-boot.jar'
 ENTRYPOINT ["java","-javaagent:dd-java-agent.jar","-Ddd.profiling.enabled=true","-Djava.security.egd=file:/dev/./urandom","-jar","/spring-petclinic.jar"]
