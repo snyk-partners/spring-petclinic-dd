@@ -5,7 +5,7 @@ CMD wget -O dd-java-agent.jar 'https://repository.sonatype.org/service/local/art
 #FROM java:8-alpine
 FROM openjdk:8
 ADD ./spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar /spring-petclinic.jar
-COPY --from=builder /petclinic/*.jar .
+COPY --from=builder /petclinic/dd-java-agent-0.68.0.jar .
 #ADD ./dd-java-agent-0.67.0.jar /dd-java-agent.jar
 #ENV DD_SERVICE=Petclinic
 #ENV DD_ENV=Production
