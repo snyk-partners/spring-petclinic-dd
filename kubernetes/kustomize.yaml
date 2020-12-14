@@ -1,0 +1,9 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+    tags.datadoghq.com/env: "production"
+    tags.datadoghq.com/service: "petclinic2"
+    tags.datadoghq.com/version: "v3.0"
+resources:
+- deployment.yaml
