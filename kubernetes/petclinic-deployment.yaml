@@ -7,10 +7,6 @@ metadata:
     tags.datadoghq.com/env: "production"
     tags.datadoghq.com/service: "petclinic2"
     tags.datadoghq.com/version: "v3.0"
-  annotations:
-    tags.datadoghq.com/env: "production"
-    tags.datadoghq.com/service: "petclinic2"
-    tags.datadoghq.com/version: "v3.0"
 spec:
   replicas: 3
   selector:
@@ -20,10 +16,6 @@ spec:
     metadata:
       labels:
         app: petclinic
-        tags.datadoghq.com/env: "production"
-        tags.datadoghq.com/service: "petclinic2"
-        tags.datadoghq.com/version: "v3.0"
-      annotations:
         tags.datadoghq.com/env: "production"
         tags.datadoghq.com/service: "petclinic2"
         tags.datadoghq.com/version: "v3.0"
