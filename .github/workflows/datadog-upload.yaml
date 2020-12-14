@@ -15,8 +15,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
     - uses: datadog/github-action-vulnerability-analysis@master
       with:
         build-file: 'pom.xml'
@@ -24,7 +22,7 @@ jobs:
         version: 'v3.0'
         datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
         datadog-app-key: ${{ secrets.DATADOG_APP_KEY }}
-        snyk-token: ${{ secrets.SNYK_TOKEN }}
+        snyk-token: ${{ secrets.SNYK_API_TOKEN }}
 #   runs-on: ubuntu-latest
 #   steps:
 #    - uses: actions/checkout@v2
