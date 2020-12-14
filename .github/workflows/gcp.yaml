@@ -5,6 +5,7 @@ on: workflow_dispatch
 
 env:
   zone: us-central1-c
+  machineType: e2-highcpu-4 
   releaseName: datadog-agent  
 
 jobs:
@@ -19,4 +20,4 @@ jobs:
         project_id: ${{ secrets.PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
-    - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }}
+    - run: gcloud container clusters create ${{secrets.GKE_CLUSTER_NAME}} --zone=${{ env.zone }} --machine-type=${{ env.machineType }}
