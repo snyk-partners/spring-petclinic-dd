@@ -17,7 +17,7 @@ jobs:
         node-version: 12.x
     - uses: datadog/github-action-vulnerability-analysis@master
       with:
-        build-file: '/pom.xml'
+        build-file: 'app/pom.xml'
         service: 'petclinic2'
         version: 'v3.0'
         datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
