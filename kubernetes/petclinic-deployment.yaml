@@ -4,11 +4,12 @@ metadata:
   name: petclinic
   labels:
     app: petclinic
+  annotations:
     tags.datadoghq.com/env: "production"
     tags.datadoghq.com/service: "petclinic2"
     tags.datadoghq.com/version: "v3.0"
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: petclinic
@@ -16,6 +17,10 @@ spec:
     metadata:
       labels:
         app: petclinic
+      annotations:
+        tags.datadoghq.com/env: "production"
+        tags.datadoghq.com/service: "petclinic2"
+        tags.datadoghq.com/version: "v3.0"
     spec:
       containers:
       - name: petclinic
