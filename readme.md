@@ -42,3 +42,25 @@ This pipeline installs the Datadog agent using Helm to your K8s cluster. It need
 **Required Secrets:**
 Datadog_API_Key
 Datadog_App_Key
+
+### Upload Datadog Data
+This pipeline uses the Snyk CLI to generate a dependency graph used by the Datadog solution to map vulnerabilities to the application at deployment.
+
+**Trigger:** Manual from GH Actions Tab
+
+**Requirements:**
+Snyk Account - Free
+Datadog Account - Free
+
+**Required Secrets:**
+Datadog_API_Key
+Datadog_App_Key
+Snyk_API_Token
+
+### Deploy-App-K8s
+This pipeline deploys the SPC application to your K8s cluster. It creates a load balancer on GCP.
+
+**Trigger:** Manual from GH Actions Tab
+
+**Requirements:**
+
