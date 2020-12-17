@@ -16,3 +16,25 @@ The pipeline builds the SPC artifact, the container image, and pushes the Image 
 
 **Required Secrets:** 
 Docker_Key - Docker API Key
+
+### GCP Setup
+This pipeline creates a K8s cluster on GCP. It requires a service account and key with K8s admin credentials.
+
+**Trigger:** Manual from GH Actions Tab
+
+**Requirements:**
+GCP Service Account with K8s admin privileges
+
+**Required Secrets:**
+Google_Application_Credentials - Service Account Key
+Project_ID - GCP Project Id
+GKE_Cluster_Name - Name of K8s cluster
+
+### Install Datadog Agent
+This pipeline installs the Datadog agent using Helm to your K8s cluster. It needs your Datadog API Key and Datadog App Key from the Datadog UI.
+
+**Trigger:** Manual from GH Action Tab
+
+**Required Secrets:**
+Datadog_API_Key
+Datadog_App_Key
