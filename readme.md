@@ -14,9 +14,9 @@ The pipeline builds the SPC artifact, the container image, and pushes the Image 
 
 **Trigger:** On Push or PR based on directory
 Ignored directories 
-      - kubernetes/**
-      - .github/workflows/**
-      - datadog/**
+ kubernetes/**
+ .github/workflows/**
+ datadog/**
 
 **Required Secrets:** 
 Docker_Key - Docker API Key
@@ -59,6 +59,9 @@ Snyk_API_Token
 
 ### Deploy-App-K8s
 This pipeline deploys the SPC application to your K8s cluster. It creates a load balancer on GCP.
+
+**Required Secrets:**
+GKE_Cluster_Name
 
 **Trigger:** Manual from GH Actions Tab
 
