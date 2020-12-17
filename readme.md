@@ -12,7 +12,7 @@ A detailed list of each pipeline with description, requirements, and how to trig
 ### Build and Push Image
 The pipeline builds the SPC artifact, the container image, and pushes the Image to Docker Hub. The pipeline defines the container image registry and repo in the pipeline. 
 
-**Trigger:** On Push or PR based on directory
+**Trigger:** On Push or PR based on directory. \
 Ignored directories \
  kubernetes/** \
  .github/workflows/** \
