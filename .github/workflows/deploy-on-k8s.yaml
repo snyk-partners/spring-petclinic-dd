@@ -26,6 +26,6 @@ jobs:
         helm repo add stable https://charts.helm.sh/stable
         helm repo update
         helm install petclinic-db --set mysqlDatabase=petclinic stable/mysql
-        kubectl apply -k kubernetes/petclinic-deployment.yaml
+        kubectl apply -f kubernetes/petclinic-deployment.yaml
         kubectl apply -f kubernetes/petclinic-svc.yaml
 
