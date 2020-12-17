@@ -14,8 +14,8 @@ The pipeline builds the SPC artifact, the container image, and pushes the Image 
 
 **Trigger:** On Push or PR based on directory
 Ignored directories 
- kubernetes/** 
- .github/workflows/** 
+ kubernetes/** \
+ .github/workflows/** \
  datadog/** 
 
 **Required Secrets:** 
