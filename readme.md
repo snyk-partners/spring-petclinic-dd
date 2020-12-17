@@ -60,10 +60,18 @@ This pipeline uses the Snyk CLI to generate a dependency graph used by the Datad
 ### Deploy-App-K8s
 This pipeline deploys the SPC application to your K8s cluster. It creates a load balancer on GCP.
 
+**Trigger:** Manual from GH Actions Tab
+
 **Required Secrets:**
 * GKE_Cluster_Name
 
+### GCP Tear-Down
+This pipeline deletes the associated GCP load balancer and your GCP K8s cluster.
+
 **Trigger:** Manual from GH Actions Tab
+
+
+
 
 
 
