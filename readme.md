@@ -26,13 +26,13 @@ This pipeline creates a K8s cluster on GCP. It requires a service account and ke
 
 **Trigger:** Manual from GH Actions Tab
 
-**Requirements:**
+**Requirements:** 
 GCP Service Account with K8s admin privileges
 
 **Required Secrets:** 
-Google_Application_Credentials - Service Account Key 
-Project_ID - GCP Project Id 
-GKE_Cluster_Name - Name of K8s cluster 
+* Google_Application_Credentials - Service Account Key 
+* Project_ID - GCP Project Id 
+* GKE_Cluster_Name - Name of K8s cluster 
 
 ### Install Datadog Agent
 This pipeline installs the Datadog agent using Helm to your K8s cluster. It needs your Datadog API Key and Datadog App Key from the Datadog UI.
