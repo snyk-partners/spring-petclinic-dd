@@ -6,7 +6,7 @@ This version of Spring Petclinic deploys to Kubernetes. The pipelines leverage G
 
 ## DataDog
 
-## Pipeline
+## Pipelines
 A detailed list of each pipeline with description, requirements, and how to trigger the pipeline
 
 ### Build and Push Image
