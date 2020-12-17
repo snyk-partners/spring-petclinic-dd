@@ -30,9 +30,9 @@ This pipeline creates a K8s cluster on GCP. It requires a service account and ke
 GCP Service Account with K8s admin privileges
 
 **Required Secrets:**
-Google_Application_Credentials - Service Account Key
-Project_ID - GCP Project Id
-GKE_Cluster_Name - Name of K8s cluster
+Google_Application_Credentials - Service Account Key \
+Project_ID - GCP Project Id \
+GKE_Cluster_Name - Name of K8s cluster \
 
 ### Install Datadog Agent
 This pipeline installs the Datadog agent using Helm to your K8s cluster. It needs your Datadog API Key and Datadog App Key from the Datadog UI.
@@ -40,8 +40,8 @@ This pipeline installs the Datadog agent using Helm to your K8s cluster. It need
 **Trigger:** Manual from GH Action Tab
 
 **Required Secrets:**
-Datadog_API_Key
-Datadog_App_Key
+Datadog_API_Key \
+Datadog_App_Key \
 
 ### Upload Datadog Data
 This pipeline uses the Snyk CLI to generate a dependency graph used by the Datadog solution to map vulnerabilities to the application at deployment.
@@ -49,13 +49,13 @@ This pipeline uses the Snyk CLI to generate a dependency graph used by the Datad
 **Trigger:** Manual from GH Actions Tab
 
 **Requirements:**
-Snyk Account - Free
-Datadog Account - Free
+Snyk Account - Free \
+Datadog Account - Free \
 
 **Required Secrets:**
-Datadog_API_Key
-Datadog_App_Key
-Snyk_API_Token
+Datadog_API_Key \
+Datadog_App_Key \
+Snyk_API_Token \
 
 ### Deploy-App-K8s
 This pipeline deploys the SPC application to your K8s cluster. It creates a load balancer on GCP.
@@ -65,5 +65,6 @@ GKE_Cluster_Name
 
 **Trigger:** Manual from GH Actions Tab
 
-**Requirements:**
+**Required Secrets:**
+GKE_Cluster_Name \
 
