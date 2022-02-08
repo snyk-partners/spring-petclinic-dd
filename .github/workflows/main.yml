@@ -20,7 +20,7 @@ env:
   # TODO: Change registry URL if not using Docker Hub
   CONTAINER_REGISTRY_URL: https://registry.hub.docker.com
   # TODO: Change Registry USERID to your userid
-  REGISTRY_USERID: alena-snyk
+  REGISTRY_USERID: alenasnyk
   #TODO: Only change if you already have a spring-petclinic you want to keep. 
   IMAGE_NAME: spring-petclinic-dd
   IMAGE_BP_NAME: spring-petclinic-bp
